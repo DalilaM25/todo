@@ -54,12 +54,12 @@ ul {
 }
 
 ul li {
-  list-style:circle;
+  list-style:none;
 }
 
-.list {
+/* .list {
   display: flex;
   flex-direction: column;
   align-items: start;
   margin-inline-start: 10vw;
-}
+} */

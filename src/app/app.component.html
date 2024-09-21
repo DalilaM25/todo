@@ -17,7 +17,41 @@
     Добавить
   </button>
 
-  <ul class="list">
-    <li *ngFor="let item of items">{{ item.description }}</li>
+  <!-- Кнопки, которые меняют отображение элементов на все, только активные или только выполненные -->
+  <div class="btn-wrapper">
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'all'"
+      (click)="filter = 'all'"
+    >
+      Все дела 🙌
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'active'"
+      (click)="filter = 'active'"
+    >
+      Не выполнено
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'done'"
+      (click)="filter = 'done'"
+    >
+      Выполнено 👍
+    </button>
+  </div>
+
+  <h2>
+    <span *ngIf="items.length === 1; else elseBlock">item</span>
+    <ng-template #elseBlock>Всего дел:</ng-template>
+    {{ items.length }}
+  </h2>
+  <ul>
+    <li *ngFor="let item of items">
+      <app-item (remove)="remove(item)" [item]="item"></app-item>
+    </li>
   </ul>
 </div>
